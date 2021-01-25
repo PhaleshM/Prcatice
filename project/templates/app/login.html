@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+
+{% block Head %}
+<title>Login</title>
+<style>
+.bg{
+    color: rgb(107, 107, 107);
+    background-color: rgb(211, 211, 211);
+    margin: auto;
+    margin-top: 15px;
+    padding:10px 0 10px 0;
+    text-align: center;
+}
+</style>
+{% endblock Head %}
+
+{% block Body %}
+<div class="bg">
+    <h1>Please Login</h1>
+    <form action="{% url 'user_login' %}" method="post">
+    {% csrf_token %}
+    <label for="username">Username: </label>
+    <input type="text" name="username" placeholder='Enter Username'><br>
+    <label for="password">Password: </label>
+    <input type="password" name="password" ><br>
+    <input type="submit" value="Login">
+    </form>
+</div>
+{% endblock Body %}

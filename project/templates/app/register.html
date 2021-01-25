@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block Head %}
+<title>Register</title>
+<style>
+    .asteriskField {
+        display: none;
+    }
+    .form-group label{
+        font-style: italic;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;    
+    }
+    .container input[type='submit'],.container input[type='file']{
+        font-style: italic;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;    
+    }
+    .container input[type='submit']{
+        margin-left: 47%;
+    }
+    .bg{ 
+        font-size: 23px;
+        margin: auto;
+        margin-top: 15px;
+        padding:10px 0 10px 0;
+    }.bg h1,.bg h3{
+        text-align: center;
+    }
+</style>
+
+
+{% endblock Head %}
+
+{% block Body %}
+<div class="bg">
+    {% if registered %}
+    <h1>Thank you for registering</h1>
+    {% else %}
+    <h1>Register Here!</h1>
+    <h3>Fill out the form:</h3>
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ user_form|crispy}}
+        {{profile_form|crispy}}
+        <input type="submit" value="Register">
+    </form>
+    {% endif %}
+
+</div>
+{% endblock Body %}
